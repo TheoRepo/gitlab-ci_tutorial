@@ -1,5 +1,7 @@
 # 如何使用gitlab构建pipeline流水线
 
+## 二、.gitlab-ci.yml的介绍与简单编写
+
 学习视频
 ![GitLab CI/CD系列教程（三）：.gitlab-ci.yml的介绍与简单编写](https://www.bilibili.com/video/BV1kA411L7jS?spm_id_from=333.337.search-card.all.click&vd_source=8ba6ed28327bb7cef4adc064e3b342c1)
 
