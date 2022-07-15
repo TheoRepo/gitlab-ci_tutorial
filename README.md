@@ -34,12 +34,79 @@ stages定义流水线的阶段（如果没有执行stages，就是默认是test�
 job定义具体执行的任务（很多job是默认的）
 script就是具体执行的脚本
 
-stages  # 全局自定义阶段 
-script  # shell脚本
-stage   # 任务内的阶段，必须从全局阶段中选
-retry   # 任务失败，自动取重试
-    max
-    when
-        - runner_system_failure
-        stuck_or_timeout_failure
-only    # 
+**关键词精讲**
+* stages
+全局自定义阶段 
+
+* script
+shell脚本
+
+* stage
+任务内的阶段，必须从全局阶段中选
+
+* retry
+任务失败，自动取重试
+
+* image
+指定一个基础Docker镜像作为基础运行环境，经常用到的镜像有node java python docker
+
+* tags
+用于指定Runner, tags的取值范围是在该项目可见的runner tags中
+
+* only/except
+限定当前任务执行的条件
+ - only 可以指定指定一个分支
+
+* when 
+when关键字是实现发生故障或尽管发生故障仍能运行的作业
+ - when manual 手动执行
+
+* cache
+缓存是将当前工作环境目录中的一些文件，一些文件夹存储起来，用于在各个任务初始化的时候恢复
+
+
+**搭建一条前端的ci/cd流水线**
+
+如果自己想要研究流水线的话，可以在阿里云租一套服务器，然后按量收费，当自己需要做方案调研的时候，就访问那台服务器
+
+任务列表
+* 安装node包
+
+* 编译
+
+* docker镜像部署
+
+使用的关键词有, image, stages, stage, tag, script, cache, docker build
+
+
+```yaml
+job_deploy:
+    image: docker
+    stage: deploy
+    script: 
+        - docker build -t folive .
+        - if [ $(docker ps -aq --filter name=mylive-container) ]; then docker rm -f mylive-container;fi  # 如果在docker搜索到容器mylive-container, 就直接删除掉
+        - docker run -d -p 8001:80 --name mylive-container folive
+        - echo 'deploy docker image success. visit http://8.135.98.62:8001'
+    when: manual
+```
+
+解决docker in docker的问题
+```bash
+"/usr/bin/docker:/usr/bin/docker", "/var/run/docker.sock:/var/run/docker.sock"
+```
+
+在服务器上注册gitlab runner
+```bash
+docker run -rm -v /srv/gitlab-runner/config:/etc/gitlab-runner gitlab/gitlab-runner register \
+    --non-interactive \ 
+    --executor "docker" \ 
+    --url "http://gitlab.mczaiyun.top/" \
+    --registration-token "xNZW4ids6x45sk3A7v3b" \
+    --description "for-vite"
+    --tag-list "vite" \
+    --run-untagged="true" \
+    --locked="false" \
+    --access-level="not_protected"
+```
+

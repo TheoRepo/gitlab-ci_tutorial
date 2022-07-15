@@ -1,0 +1,42 @@
+image: node:alpine
+
+
+stages:
+  - install
+  - build
+  - deploy
+
+
+cache:
+  key: hello-vue-cache
+  paths:
+    - node_modules
+    - index.html
+
+
+job_install:
+  stage: install
+  tags:
+    - dockercicd1
+  script:
+    - npm install
+
+
+job_build:
+  stage: build
+  tags:
+    - dockercicd1
+  script:
+    - npm run build
+  only:
+    - release
+
+
+job_deploy:
+  stage: deploy
+  tags:
+  - dockercicd1
+  script:
+    - echo 'start deploy'
+  when: manual
+
