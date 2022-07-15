@@ -1,0 +1,30 @@
+stages:
+  - stage1
+  - stage2
+  - stage3
+  - deploy
+  - clean
+
+job1:
+  stage: stage1
+  script:
+    - echo 'my .pre job'
+    - echo 'my job1'
+    - echo 'my job2'
+
+job2:
+  stage: stage2
+  script:
+    - echo 'my build job'
+
+job3:
+  stage: stage3
+  script:
+    - echo "my test job"
+
+job4:
+  stage: stage3
+  script:
+    - echo "my test stage job4"
+
+    
