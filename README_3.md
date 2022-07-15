@@ -58,11 +58,11 @@ job_deploy:
 容器的名称 mylive-container
 
 ### pipeline中预定义的变量
-[](./pic/pre_define_variables.png)
+![](./pic/pre_define_variables.png)
 
 
 ### 设置在项目中设置变量
-[](./pic/variable_in_project.png)
+![](./pic/variable_in_project.png)
 
 导出所有的预定义变量
 ```bash
