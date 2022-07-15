@@ -63,3 +63,10 @@ job_deploy:
 
 ### 设置在项目中设置变量
 [](./pic/variable_in_project.png)
+
+导出所有的预定义变量
+```bash
+get_all_var:
+    script:
+        - export
+```
