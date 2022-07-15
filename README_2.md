@@ -22,7 +22,8 @@
 运行这个配置文件，就会生成一条流水线
 
 **配置文件.gitlab-ci.yml要怎么编写**
-![.gitlab-ci.yml 基本关键词的使用](https://blog.csdn.net/github_35631540/article/details/111029151)
+[.gitlab-ci.yml 基本关键词的使用](https://blog.csdn.net/github_35631540/article/details/111029151)
+
 常用关键词: script, after_script, allow_failure, artifacts, before_script, cache, coverage, dependencies, environment, except, extends, images, include, interruptible, only, pages, parallel, release, resource_group, retry, rules, services, stage, tags, timeout, trigger, variables, when
 
 **三个概念**
