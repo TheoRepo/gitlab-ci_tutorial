@@ -3,7 +3,7 @@
 ## 一、Docker安装GitLab Runner
 
 学习视频
-![GitLab CI/CD系列教程（二）：Docker安装GitLab Runner](https://www.bilibili.com/video/BV185411c7bJ/?spm_id_from=333.788&vd_source=8ba6ed28327bb7cef4adc064e3b342c1)
+[GitLab CI/CD系列教程（二）：Docker安装GitLab Runner](https://www.bilibili.com/video/BV185411c7bJ/?spm_id_from=333.788&vd_source=8ba6ed28327bb7cef4adc064e3b342c1)
 
 ## 概念
 
@@ -78,4 +78,4 @@ docker run --rm -v /srv/gitlab-runner/config:/etc/gitlab-runner gitlab/gitlab-ru
 - 注册runner的一个标签，指定你的流水线在哪一个runner下运行，就必须要指定tags
 
 3. 查看gitlab目前关联runner
-![./pic/gitlab_runner_admin]
+![](./pic/gitlab_runner_admin.png)

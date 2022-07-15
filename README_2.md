@@ -3,7 +3,7 @@
 ## 二、.gitlab-ci.yml的介绍与简单编写
 
 学习视频
-![GitLab CI/CD系列教程（三）：.gitlab-ci.yml的介绍与简单编写](https://www.bilibili.com/video/BV1kA411L7jS?spm_id_from=333.337.search-card.all.click&vd_source=8ba6ed28327bb7cef4adc064e3b342c1)
+[GitLab CI/CD系列教程（三）：.gitlab-ci.yml的介绍与简单编写](https://www.bilibili.com/video/BV1kA411L7jS?spm_id_from=333.337.search-card.all.click&vd_source=8ba6ed28327bb7cef4adc064e3b342c1)
 
 学习文档
 [gitlab docs 中文](https://docs.gitlab.cn/jh/ci/yaml/index.html)
@@ -96,19 +96,5 @@ job_deploy:
 解决docker in docker的问题
 ```bash
 "/usr/bin/docker:/usr/bin/docker", "/var/run/docker.sock:/var/run/docker.sock"
-```
-
-在服务器上注册gitlab runner
-```bash
-docker run -rm -v /srv/gitlab-runner/config:/etc/gitlab-runner gitlab/gitlab-runner register \
-    --non-interactive \ 
-    --executor "docker" \ 
-    --url "http://gitlab.mczaiyun.top/" \
-    --registration-token "xNZW4ids6x45sk3A7v3b" \
-    --description "for-vite"
-    --tag-list "vite" \
-    --run-untagged="true" \
-    --locked="false" \
-    --access-level="not_protected"
 ```
 
